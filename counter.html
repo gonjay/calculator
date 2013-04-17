@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+  <title>calculator</title>
+  <style>
+  * {padding:0;}
+
+
+  .number button{
+    width: 40px;
+    height: 40px;
+    margin:5px;
+    background: white;
+  }
+  .enter{
+    margin: 5px 5px;
+    height: 90px;
+    width: 41px;
+}
+.result{
+  width: 208px;
+  margin-left: 6px;
+  height: 50px;
+  border-radius: 5px;
+}
+.operation button{
+  width: 40px;
+  height: 40px;
+  margin:5px;
+  background: #eee;
+}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div>
+      <input class="result" value="0"></input>
+    </div>
+    <div style="float:left;">
+      <div class="operation">
+        <button class='clear'>c</button>
+        <button >DEL</button>
+        <button data-value='1'>/</button>
+      </div>
+      <div class="number">
+        <button>7</button>
+        <button>8</button>
+        <button>9</button><br/>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button><br/>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button><br/>
+        <button style="width:99px">0</button>
+        <button>.</button>
+      </div>
+    </div>
+    <div class="operation" style="width:50px; margin-left:174px">
+      <button data-value='2'>x</button>
+      <button data-value='3'>+</button>
+      <button data-value='4'>-</button>
+      <button style="height:88px" class="opr_enter">=</button>
+    </div>
+</body>
+<script src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var num1=0,num2=0,opr=0;
+    var opr_val = 0;
+    var fin_result = 0;
+    $('.number').on('click','button',function(){
+      if(opr==0){
+        num1 = num1 + $(this).html();
+        $('.result').val(parseFloat(num1));
+      }else{
+        num2 = num2 + $(this).html();
+        $('.result').val(parseFloat(num1) + opr + parseFloat(num2));
+      }   
+    });
+    $('.operation').on('click','button',function(){
+       if($(this).html()===$('.opr_enter').html()){
+       }else
+       if($(this).html() === $('.clear').html()){
+        num1=0;num2=0;opr=0;opr_val = 0;fin_result = 0;
+        $('.result').val(parseFloat(num1));
+        }else{
+          opr = $(this).html();
+          opr_val = $(this).data('value');
+          $('.result').val(parseFloat(num1) + opr);
+         }
+    });
+    $('.opr_enter').click(function(){
+      
+      num1 = parseFloat(num1);
+      num2 = parseFloat(num2);
+      switch(opr_val){
+        case 3:
+        fin_result = num1+num2;
+        break;
+        case 4:
+        fin_result = num1-num2;
+        break;
+        case 2:
+        fin_result = num1*num2;
+        break;
+        case 1:
+        fin_result = num1/num2;
+        break;
+      }
+      num1=fin_result;num2=0;opr=0;
+      $('.result').val(fin_result);
+    });
+  });
+</script>
+
+</html>
