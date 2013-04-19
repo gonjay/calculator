@@ -145,7 +145,8 @@
       }else{
         isEnter = mathPressed.data('value');
         isEnterName = mathPressed.html(); // Yes &  nextOperationSymbol
-        myOperator(operationSymbol)
+        myOperator(operationSymbol);
+        operationSymbol = isEnter,isEnter=0;
       };
     };
 
@@ -169,9 +170,10 @@
                   break;
               }
         $('.result').val(parseFloat(finalResult));
-        num1 = 0,num2 = 0,operationSymbol = 0,mathPressed=0;
+        num1 = 0,num2 = 0,operationSymbol = 0;
         if (isEnter != 0) {
-          operationSymbol = isEnter,num1 = parseFloat(finalResult),isEnter=0,finalResult=0;
+          // operationSymbol = isEnter;
+          num1 = parseFloat(finalResult),finalResult=0;
           $('.result').val(parseFloat(num1) + ' ' +isEnterName);
         };
     };
