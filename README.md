@@ -1,2 +1,14 @@
-##学习git
-http://www.codeschool.com/courses/try-git
+
+基本各种交互都能满足，比较符合快速连续计算的用户，像最传统的简单计算器。
+期望保障任何情况下的交互不冲突，撤销修改等。
+
+Demo http://press.linsk.cn/calculator.html
+
+##TODO
+input中多于两个运算符的情况使用一次计算结果。
+
+
+##已知问题
+#####连续计算后再--得+ √
+#####连续计算后Del最后一位出错，应为0√
+#####num2 = 0√
