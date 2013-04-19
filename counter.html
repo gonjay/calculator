@@ -93,15 +93,8 @@
         $('.result').val(parseFloat(num2));
         }//end-if
      });//end-function
-     
-    //mathPressed
-    $('.math').click(function(){
-      
-     mathPressed = $(this);
-     symbolsOrEnter(mathPressed)
-     });
 
-    // DEL Butt.on
+    //the DEL Button
     $('.del').click(function(){
       if (num1==0) {
         if (finalResult==0) {
@@ -131,9 +124,16 @@
     // The 「=」 Button
     $('.opr_enter').click(function(){
       if (num2!=0) {
-        myOperator(operationSymbol,0,0)
+        myOperator(operationSymbol)
       };
     });
+
+    //mathPressed
+    $('.math').click(function(){
+      
+     mathPressed = $(this);
+     symbolsOrEnter(mathPressed)
+     });
 
     function symbolsOrEnter(mathPressed){
 
@@ -145,11 +145,11 @@
       }else{
         isEnter = mathPressed.data('value');
         isEnterName = mathPressed.html(); // Yes &  nextOperationSymbol
-        myOperator(operationSymbol,isEnter,isEnterName)
+        myOperator(operationSymbol)
       };
     };
 
-    function myOperator(operationSymbol,isEnter,isEnterName){
+    function myOperator(operationSymbol){
       num1 = parseFloat(num1);
       num2 = parseFloat(num2);
 
@@ -169,12 +169,10 @@
                   break;
               }
         $('.result').val(parseFloat(finalResult));
-        operationSymbol = 0;
+        num1 = 0,num2 = 0,operationSymbol = 0,mathPressed=0;
         if (isEnter != 0) {
-          num1 = parseFloat(finalResult),num2 = 0,operationSymbol = isEnter;
+          operationSymbol = isEnter,num1 = parseFloat(finalResult),isEnter=0,finalResult=0;
           $('.result').val(parseFloat(num1) + ' ' +isEnterName);
-        }else{
-          num1 = 0, num2 = 0, operationSymbol=0 ;
         };
     };
         
