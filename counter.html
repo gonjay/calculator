@@ -81,7 +81,7 @@
 <script src="jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
-    var num1 = 0, num2 =0, operationSymbol = 0, isEnter=0,isEnterName=0, mathPressed = 0, finalResult=0;
+    var num1 = 0, num2 =null, operationSymbol = 0, isEnter=0,isEnterName=0, mathPressed = 0, finalResult=0;
 
     //numberPressed
     $('.number').on('click','button',function(){
@@ -89,10 +89,11 @@
         num1 = num1 + $(this).html();
         $('.result').val(parseFloat(num1));
       }else{
+        num2 = 0;
         num2 = num2 + $(this).html();
         $('.result').val(parseFloat(num2));
-        }//end-if
-     });//end-function
+        }
+     });
 
     //the DEL Button
     $('.del').click(function(){
@@ -105,7 +106,7 @@
         };
         
       }
-      else if (num2==0) {
+      else if (num2==null) {
           num1 = num1.toString().slice(0,-1);
           $('.result').val(parseFloat(num1));
       }
@@ -115,15 +116,19 @@
       };
     });
 
+    // $('.del'),click(function(){
+    //   if (num2==null) {};
+    // });
+
     //clear(C) Button
     $('.clear').click(function(){
-      num1 = 0, num2 = 0, operationSymbol=0, finalResult=0 ;
+      num1 = 0, num2 = null, operationSymbol=0, finalResult=0 ;
       $('.result').val(num1);
     });
 
     // The 「=」 Button
     $('.opr_enter').click(function(){
-      if (num2!=0) {
+      if (num2!=null) {
         myOperator(operationSymbol)
       };
     });
@@ -138,7 +143,7 @@
     function symbolsOrEnter(mathPressed){
 
       //判断运算按钮 +-*/ 当前状态是运算符还是执行运算
-      if (num2 == 0) {
+      if (num2 == null) {
         operationSymbol = mathPressed.data('value');
         $('.result').val(parseFloat(num1) + ' ' + mathPressed.html() );
           //不做运算
@@ -170,7 +175,7 @@
                   break;
               }
         $('.result').val(parseFloat(finalResult));
-        num1 = 0,num2 = 0,operationSymbol = 0;
+        num1 = 0,num2 = null,operationSymbol = 0;
         if (isEnter != 0) {
           // operationSymbol = isEnter;
           num1 = parseFloat(finalResult),finalResult=0;
