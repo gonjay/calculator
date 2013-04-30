@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>calculator</title>
-
+  <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0" name="viewport" />
   <!-- TODO 
 
   1+1=2 √
@@ -14,34 +14,37 @@
   -->
   <style>
   * {padding:0;}
+  button{
+    border-radius: 5px;
+  }
 
 
   .number button{
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     margin:5px;
     background: white;
     }
   .operation button{
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     margin:5px;
     background: #eee;
     }
   .enter{
     margin: 5px 5px;
-    height: 90px;
-    width: 41px;
+    height: 133px;
+    width: 60px;
     }
   .result{
-    width: 208px;
-    margin-left: 6px;
+    width: 278px;
+    margin: 6px;
     height: 50px;
     border-radius: 5px;
     }
 
     .box{
-
+      margin-left: 5px;
     }
 </style>
 
@@ -67,18 +70,18 @@
         <button>1</button>
         <button>2</button>
         <button>3</button><br/>
-        <button style="width:99px">0</button>
+        <button style="width:133px">0</button>
         <button>.</button>
       </div>
     </div>
-    <div class="operation" style="width:50px; margin-left:174px">
+    <div class="operation" style="width:50px; margin-left:220px;">
       <button class="math" data-value='3'>x</button>
       <button class="math" data-value='1'>+</button>
       <button class="math" data-value='2'>-</button>
-      <button style="height:88px" class="opr_enter">=</button>
+      <button style="height:130px;" class="opr_enter">=</button>
     </div>
-</body>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
     var num1 = 0, num2 =null, operationSymbol = 0, isEnter=0,isEnterName=0, mathPressed = 0, finalResult=0;
@@ -193,5 +196,6 @@
   });
 
 </script>
+</body>
 
 </html>
